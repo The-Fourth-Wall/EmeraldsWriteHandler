@@ -1,22 +1,40 @@
 # WriteHandler
 
-TODO: Write a description here
+A safe file writer api.
 
 # Installation
 
-TODO: Write installation instructions here
+Install the library
+
+`em list`
+`em install`
+`em build lib`
 
 ## Usage
 
-TODO: Write usage instructions here
+```c
+#include "WriteHandler.h"
+
+int main(void) {
+    char *line = "something random";
+    struct write_handler *h = write_handler_new();
+
+    if(write_handler_open(h, "file.txt")) {
+        write_handler_write(line);
+        write_handler_write("\n");
+    }
+
+    write_handler_close(h);
+}
+```
 
 ## Development
 
-TODO: Write development instructions here
+* Write tests
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/WriteHandler/fork>)
+1. Fork it (<https://github.com/Oblivious-Oblivious/WriteHandler/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -24,4 +42,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [YourName](https://github.com/your-github-user) - creator and maintainer
+- [Oblivious](https://github.com/Oblivious-Oblivious) - creator and maintainer
