@@ -4,4 +4,6 @@
 #include "../src/WriteHandler.h"
 #include "../libs/cSpec/export/cSpec.h"
 
+#include "WriteHandler/T_write_handler.module.spec.h"
+
 #endif
