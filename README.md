@@ -20,8 +20,8 @@ int main(void) {
     struct write_handler *h = write_handler_new();
 
     if(write_handler_open(h, "file.txt")) {
-        write_handler_write(line);
-        write_handler_write("\n");
+        write_handler_write(h, line);
+        write_handler_write(h, "\n");
     }
 
     write_handler_close(h);
