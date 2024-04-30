@@ -1,10 +1,10 @@
 #ifndef __WRITE_HANDLER_BASE_H_
 #define __WRITE_HANDLER_BASE_H_
 
+#include "../../libs/Bool/export/Bool.h"
+
 #include <stdio.h>  /* FILE, fopen, fprintf, fclose, printf */
 #include <stdlib.h> /* malloc, realloc, free */
-
-#include "../../../libs/Bool/export/Bool.h"
 
 /**
  * @struct write_handler
@@ -13,8 +13,8 @@
  * @param filepath -> The name of the file to write to
  */
 struct write_handler {
-    FILE *fd;
-    char *filepath;
+  FILE *fd;
+  const char *filepath;
 };
 
 /**
@@ -22,7 +22,7 @@ struct write_handler {
  * @brief Creates a new instance of a write handler
  * @return struct write_handler* -> The newly allocated handler
  */
-struct write_handler *write_handler_new();
+struct write_handler *write_handler_new(void);
 
 /**
  * @func: write_handler_open
@@ -30,7 +30,7 @@ struct write_handler *write_handler_new();
  * @param filepath -> The path to open
  * @return a boolean signaling if the opening was successful
  */
-bool write_handler_open(struct write_handler *self, char *filepath);
+bool write_handler_open(struct write_handler *self, const char *filepath);
 
 /**
  * @func: write_handler_write
@@ -38,7 +38,7 @@ bool write_handler_open(struct write_handler *self, char *filepath);
  * @param str -> The string to write
  * @return a boolean signaling if the opening was successful
  */
-bool write_handler_write(struct write_handler *self, char *str);
+bool write_handler_write(struct write_handler *self, const char *str);
 
 /**
  * @func: write_handler_write_line
@@ -46,7 +46,7 @@ bool write_handler_write(struct write_handler *self, char *str);
  * @param line -> The line to write
  * @return a boolean signaling if the opening was successful
  */
-bool write_handler_write_line(struct write_handler *self, char *line);
+bool write_handler_write_line(struct write_handler *self, const char *line);
 
 /**
  * @func: write_handler_close
