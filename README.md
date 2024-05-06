@@ -1,4 +1,4 @@
-# WriteHandler
+# EmeraldsWriteHandler
 
 A safe file writer api.
 
@@ -13,26 +13,24 @@ Install the library
 ## Usage
 
 ```c
-#include "WriteHandler.h"
+#include "EmeraldsWriteHandler.h"
 
 int main(void) {
-    char *line = "something random";
-    struct write_handler *h = write_handler_new();
+  char *line = "something random";
+  EmeraldsWriteHandler *h = write_handler_new();
 
-    if(write_handler_open(h, "file.txt")) {
-        write_handler_write(h, line);
-        write_handler_write(h, "\n");
-    }
+  if(write_handler_open(h, "file.txt")) {
+    write_handler_write(h, line);
+    write_handler_write(h, "\n");
+  }
 
-    write_handler_close(h);
+  write_handler_close(h);
 }
 ```
 
-## Development
-
 ## Contributing
 
-1. Fork it (<https://github.com/EmeraldsFramework/WriteHandler/fork>)
+1. Fork it (<https://github.com/Oblivious-Oblivious/EmeraldsWriteHandler/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -40,4 +38,4 @@ int main(void) {
 
 ## Contributors
 
-- [Oblivious](https://github.com/Oblivious-Oblivious) - creator and maintainer
+- [oblivious](https://github.com/Oblivious-Oblivious) - creator and maintainer

@@ -4,19 +4,19 @@
  * @func: "delete previous file"
  * @brief Delete any previous instance of the file
  */
-void write_handler_delete_previous_file(struct write_handler *self) {
+void write_handler_delete_previous_file(EmeraldsWriteHandler *self) {
   remove(self->filepath);
 }
 
-struct write_handler *write_handler_new(void) {
-  struct write_handler *h =
-    (struct write_handler *)malloc(sizeof(struct write_handler));
+EmeraldsWriteHandler *write_handler_new(void) {
+  EmeraldsWriteHandler *h =
+    (EmeraldsWriteHandler *)malloc(sizeof(EmeraldsWriteHandler));
   h->filepath = NULL;
   h->fd       = NULL;
   return h;
 }
 
-bool write_handler_open(struct write_handler *self, const char *filepath) {
+bool write_handler_open(EmeraldsWriteHandler *self, const char *filepath) {
   self->filepath = filepath;
   write_handler_delete_previous_file(self);
 
@@ -27,7 +27,7 @@ bool write_handler_open(struct write_handler *self, const char *filepath) {
   return true;
 }
 
-bool write_handler_write(struct write_handler *self, const char *str) {
+bool write_handler_write(EmeraldsWriteHandler *self, const char *str) {
   if(!(fprintf(self->fd, "%s", str))) {
     printf("Error on writting `%s` to file: `%s`\n", str, self->filepath);
     return false;
@@ -35,7 +35,7 @@ bool write_handler_write(struct write_handler *self, const char *str) {
   return true;
 }
 
-bool write_handler_write_line(struct write_handler *self, const char *line) {
+bool write_handler_write_line(EmeraldsWriteHandler *self, const char *line) {
   if(write_handler_write(self, line)) {
     return write_handler_write(self, "\n");
   }
@@ -43,7 +43,7 @@ bool write_handler_write_line(struct write_handler *self, const char *line) {
   return false;
 }
 
-bool write_handler_close(struct write_handler *self) {
+bool write_handler_close(EmeraldsWriteHandler *self) {
   if((fclose(self->fd))) {
     printf("Error on closing file: `%s`\n", self->filepath);
     return false;

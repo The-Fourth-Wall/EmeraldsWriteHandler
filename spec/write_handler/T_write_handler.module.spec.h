@@ -1,7 +1,7 @@
 #include "../../libs/cSpec/export/cSpec.h"
 #include "../../src/write_handler_base/write_handler_base.h"
 
-struct write_handler *T_write_handler_object;
+EmeraldsWriteHandler *T_write_handler_object;
 void setup_write_handler_object(void) {
   T_write_handler_object = write_handler_new();
 }
